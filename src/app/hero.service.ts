@@ -2,9 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Hero } from './hero';
 import { MessageService } from './message.service';
-import { of, shareReplay } from 'rxjs';
+import { Observable, of, shareReplay, Subject } from 'rxjs';
+import { repeat, takeUntil, tap } from 'rxjs/operators';
 
 const JSONOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+
+export type CancelFunction = () => void;
+
+export interface Cancelable {
+  cancel: CancelFunction;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -16,40 +23,59 @@ export class HeroService {
   ) { }
 
   getAll() {
-    const get = this.http.get<Hero[]>('api/heroes').pipe(shareReplay());
-    get.subscribe(() => this.messageService.add('Fetched all heroes.'));
-    return get;
+    return this.http.get<Hero[]>('api/heroes').pipe(
+      tap(() => this.messageService.add('Fetched all heroes.')),
+      shareReplay()
+    );
+  }
+
+  getAllAutoRefresh(delay: number): Observable<Hero[]> & Cancelable {
+    const stop = new Subject();
+    return Object.assign(
+      this.http.get<Hero[]>('api/heroes').pipe(
+        tap(() => this.messageService.add('Fetched all heroes.')),
+        repeat({ delay }),
+        takeUntil(stop),
+        shareReplay()
+      ),
+      { cancel: () => stop.next(null) }
+    );
   }
 
   get(id: number) {
-    const get = this.http.get<Hero>(`api/heroes/${id}`).pipe(shareReplay());
-    get.subscribe(() => this.messageService.add(`Fetched hero with id ${id}.`));
-    return get;
-  }
-
-  update(hero: Hero) {
-    const put = this.http.put('api/heroes', hero, JSONOptions).pipe(shareReplay());
-    put.subscribe(() => this.messageService.add(`Updated hero with id ${hero.id}.`));
-    return put;
-  }
-
-  add(hero: Hero) {
-    const post = this.http.post('api/heroes', hero, JSONOptions).pipe(shareReplay());
-    post.subscribe(() => this.messageService.add(`Added hero with name ${hero.name}.`));
-    return post;
-  }
-
-  remove(id: number) {
-    const del = this.http.delete(`api/heroes/${id}`).pipe(shareReplay());
-    del.subscribe(() => this.messageService.add(`Removed hero with id ${id}.`));
-    return del;
+    return this.http.get<Hero>(`api/heroes/${id}`).pipe(
+      tap(() => this.messageService.add(`Fetched hero with id ${id}.`)),
+      shareReplay()
+    );
   }
 
   search(term: string) {
     if(!term.trim()) return of([]);
     const params = new HttpParams().append('name', term);
-    const get = this.http.get<Hero[]>('api/heroes', { params }).pipe(shareReplay());
-    get.subscribe(({ length }) => this.messageService.add(`Found ${length} heroes for search term '${term}'.`));
-    return get;
+    return this.http.get<Hero[]>('api/heroes', { params }).pipe(
+      tap(({ length }) => this.messageService.add(`Found ${length} heroes for search term '${term}'.`)),
+      shareReplay()
+    );
+  }
+
+  add(hero: Hero) {
+    return this.http.post('api/heroes', hero, JSONOptions).pipe(
+      tap(() => this.messageService.add(`Added hero with name ${hero.name}.`)),
+      shareReplay()
+    );
+  }
+
+  update(hero: Hero) {
+    return this.http.put('api/heroes', hero, JSONOptions).pipe(
+      tap(() => this.messageService.add(`Updated hero with id ${hero.id}.`)),
+      shareReplay()
+    );
+  }
+
+  remove(id: number) {
+    return this.http.delete(`api/heroes/${id}`).pipe(
+      tap(() => this.messageService.add(`Removed hero with id ${id}.`)),
+      shareReplay()
+    );
   }
 }
