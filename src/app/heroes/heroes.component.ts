@@ -1,26 +1,20 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Hero } from '../hero';
-import { HeroService, CancelFunction } from '../hero.service';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.scss']
 })
-export class HeroesComponent implements OnInit, OnDestroy {
-  cancelRefresh?: CancelFunction;
-  heroes: Hero[] = [];
+export class HeroesComponent implements OnInit {
+  heroes?: Observable<Hero[]>;
 
   constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
-    const all = this.heroService.getAllAutoRefresh(1000);
-    this.cancelRefresh = all.cancel;
-    all.subscribe(heroes => this.heroes = heroes);
-  }
-
-  ngOnDestroy(): void {
-    (this.cancelRefresh)?.();
+    this.heroes = this.heroService.getAll();
   }
 
   add(name: string) {

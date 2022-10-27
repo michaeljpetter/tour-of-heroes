@@ -10,7 +10,7 @@
 </div>
 
 <ul class="heroes">
-  <li *ngFor="let hero of heroes" class="hero">
+  <li *ngFor="let hero of heroes | async" class="hero">
     <a [routerLink]="['/heroes', hero.id]">
       <span class="badge">{{hero.id}}</span>
       <span class="name">{{hero.name}}</span>
