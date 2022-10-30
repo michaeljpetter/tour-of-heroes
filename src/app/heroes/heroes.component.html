@@ -15,6 +15,8 @@
       <span class="badge">{{hero.id}}</span>
       <span class="name">{{hero.name}}</span>
     </a>
-    <button type="button" class="delete" (click)="delete(hero)">X</button>
+    <button type="button" class="delete" (click)="delete(hero)">
+      <mat-icon class="delete-icon">delete</mat-icon>
+    </button>
   </li>
 </ul>
