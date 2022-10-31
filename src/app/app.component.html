@@ -1,7 +1,27 @@
-<h1><a routerLink="/">{{title}}</a></h1>
-<nav>
-  <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-  <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
-</nav>
+<mat-toolbar color="primary" class="header">
+  <nav>
+    <button
+      mat-flat-button
+      color="primary"
+      disableRipple
+      class="title"
+      routerLink="/"
+    >
+      {{title}}
+    </button>
+    <button
+      *ngFor="let nav of [
+        {name: 'Dashboard', link: '/dashboard'},
+        {name: 'Heroes', link: '/heroes'}
+      ]"
+      mat-flat-button
+      [routerLink]="nav.link"
+      routerLinkActive #a="routerLinkActive"
+      [color]="a.isActive ? 'accent' : 'primary'"
+    >
+      {{nav.name}}
+    </button>
+  </nav>
+  <app-messages></app-messages>
+</mat-toolbar>
 <router-outlet></router-outlet>
-<app-messages></app-messages>

@@ -1,4 +1,19 @@
-<div>
-  <h2>Messages <button *ngIf="messageService.messages.length" type="button" class="clear" (click)="messageService.clear()">Clear</button></h2>
-  <div *ngFor='let message of messageService.messages'>{{message}}</div>
-</div>
+<button mat-icon-button class="button" [matMenuTriggerFor]="menu">
+  <mat-icon
+    class="icon"
+    [matBadge]="messageService.messages.length"
+    matBadgeSize="small"
+    matBadgeColor="accent"
+    [matBadgeHidden]="!messageService.messages.length"
+  >
+    notifications
+  </mat-icon>
+</button>
+
+<mat-menu #menu>
+  <div mat-menu-item disabled *ngIf="!messageService.messages.length else messages">No messages</div>
+  <ng-template #messages>
+    <button mat-menu-item (click)="messageService.clear()">Clear</button>
+    <div mat-menu-item disabled *ngFor='let message of messageService.messages'>{{message}}</div>
+  </ng-template>
+</mat-menu>
