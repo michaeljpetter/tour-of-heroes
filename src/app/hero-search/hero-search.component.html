@@ -8,7 +8,7 @@
 
   <mat-autocomplete #auto [displayWith]="heroName">
     <mat-option *ngFor="let hero of results | async" [value]="hero">
-      {{hero.name}}
+      <app-hero-title [hero]="hero"></app-hero-title>
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>

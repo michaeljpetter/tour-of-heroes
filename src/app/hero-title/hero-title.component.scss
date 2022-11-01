@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name {
+  font-size: 1rem;
+}
+
+.id {
+  font-size: .75rem;
+  color: #cccccc;
+  opacity: .68;
+}

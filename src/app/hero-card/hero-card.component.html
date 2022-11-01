@@ -1,7 +1,6 @@
 <mat-card matRipple [routerLink]="['/heroes', hero.id]">
   <mat-card-title>
-    <span class="name">{{hero.name}}</span>
-    <span class="id">{{hero.id}}</span>
+    <app-hero-title [hero]="hero"></app-hero-title>
   </mat-card-title>
   <mat-card-content [class.no-actions]="!showActions">
 
