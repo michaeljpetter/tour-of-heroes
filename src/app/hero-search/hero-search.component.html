@@ -1,12 +1,14 @@
-<div id="search-component">
-  <label for="search-box">Hero Search</label>
-  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+<mat-form-field appearance="fill">
+  <input
+    matInput
+    [formControl]="term"
+    placeholder="Search"
+    [matAutocomplete]="auto"
+  />
 
-  <ul class="search-result">
-    <li *ngFor="let hero of results | async" >
-      <a [routerLink]="['/heroes', hero.id]">
-        {{hero.name}}
-      </a>
-    </li>
-  </ul>
-</div>
+  <mat-autocomplete #auto [displayWith]="heroName">
+    <mat-option *ngFor="let hero of results | async" [value]="hero">
+      {{hero.name}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

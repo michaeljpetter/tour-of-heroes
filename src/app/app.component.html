@@ -1,14 +1,14 @@
 <mat-toolbar color="primary" class="header">
+  <button
+    mat-flat-button
+    color="primary"
+    disableRipple
+    class="title"
+    routerLink="/"
+  >
+    {{title}}
+  </button>
   <nav>
-    <button
-      mat-flat-button
-      color="primary"
-      disableRipple
-      class="title"
-      routerLink="/"
-    >
-      {{title}}
-    </button>
     <button
       *ngFor="let nav of [
         {name: 'Dashboard', link: '/dashboard'},
@@ -22,6 +22,7 @@
       {{nav.name}}
     </button>
   </nav>
+  <app-hero-search></app-hero-search>
   <app-messages></app-messages>
 </mat-toolbar>
 <router-outlet></router-outlet>
