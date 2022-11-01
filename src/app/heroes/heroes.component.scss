@@ -1,4 +1,16 @@
 .my-heroes {
+  background-color: rgba(0,0,0,.04);
+
+  .mat-card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .add-icon {
+    scale: 1.5;
+  }
+
   .mat-card-content {
     margin-top: 1rem;
     display: flex;

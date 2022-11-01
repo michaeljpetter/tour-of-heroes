@@ -1,14 +1,10 @@
-<div>
-  <label for="new-hero">Hero name: </label>
-  <input id="new-hero" #heroName />
-
-  <button type="button" class="add-button" (click)="add(heroName.value); heroName.value=''">
-    Add hero
-  </button>
-</div>
-
 <mat-card class="my-heroes">
-  <mat-card-title>My Heroes</mat-card-title>
+  <mat-card-title>
+    My Heroes
+    <button mat-icon-button color="accent" routerLink="/heroes/new">
+      <mat-icon class="add-icon">add</mat-icon>
+    </button>
+  </mat-card-title>
   <mat-card-content>
     <app-hero-card *ngFor="let hero of heroes | async" [hero]="hero"></app-hero-card>
   </mat-card-content>

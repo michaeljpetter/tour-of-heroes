@@ -16,10 +16,4 @@ export class HeroesComponent implements OnInit {
   ngOnInit(): void {
     this.heroes = this.heroService.getAll();
   }
-
-  add(name: string) {
-    const sanitizedName = name.trim();
-    if(!sanitizedName) return;
-    this.heroService.add({ name: sanitizedName } as Hero).subscribe();
-  }
 }

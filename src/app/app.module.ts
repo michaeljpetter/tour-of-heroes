@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import { HeroTitleComponent } from './hero-title/hero-title.component';
+import { NewHeroComponent } from './new-hero/new-hero.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HeroTitleComponent } from './hero-title/hero-title.component';
     DashboardComponent,
     HeroSearchComponent,
     HeroCardComponent,
-    HeroTitleComponent
+    HeroTitleComponent,
+    NewHeroComponent
   ],
   imports: [
     BrowserModule,

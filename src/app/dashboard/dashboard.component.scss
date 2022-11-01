@@ -1,4 +1,10 @@
 .top-heroes {
+  background-color: rgba(0,0,0,.04);
+
+  .mat-card-title {
+    padding: .35rem 0;
+  }
+
   .mat-card-content {
     margin-top: 1rem;
     display: flex;
