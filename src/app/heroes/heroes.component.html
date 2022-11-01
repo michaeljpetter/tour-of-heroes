@@ -1,5 +1,3 @@
-<h2>My Heroes</h2>
-
 <div>
   <label for="new-hero">Hero name: </label>
   <input id="new-hero" #heroName />
@@ -9,14 +7,9 @@
   </button>
 </div>
 
-<ul class="heroes">
-  <li *ngFor="let hero of heroes | async" class="hero">
-    <a [routerLink]="['/heroes', hero.id]">
-      <span class="badge">{{hero.id}}</span>
-      <span class="name">{{hero.name}}</span>
-    </a>
-    <button type="button" class="delete" (click)="delete(hero)">
-      <mat-icon class="delete-icon">delete</mat-icon>
-    </button>
-  </li>
-</ul>
+<mat-card class="my-heroes">
+  <mat-card-title>My Heroes</mat-card-title>
+  <mat-card-content>
+    <app-hero-card *ngFor="let hero of heroes | async" [hero]="hero"></app-hero-card>
+  </mat-card-content>
+</mat-card>

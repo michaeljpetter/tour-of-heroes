@@ -1,6 +1,6 @@
-<h2>Top Heroes</h2>
-<div class="heroes-menu">
-  <a *ngFor="let hero of heroes | async" [routerLink]="['/heroes', hero.id]">
-    {{hero.name}}
-  </a>
-</div>
+<mat-card class="top-heroes">
+  <mat-card-title>Top Heroes</mat-card-title>
+  <mat-card-content>
+    <app-hero-card *ngFor="let hero of heroes | async" [hero]="hero" [showActions]="false"></app-hero-card>
+  </mat-card-content>
+</mat-card>

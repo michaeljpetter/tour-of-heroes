@@ -22,8 +22,4 @@ export class HeroesComponent implements OnInit {
     if(!sanitizedName) return;
     this.heroService.add({ name: sanitizedName } as Hero).subscribe();
   }
-
-  delete({ id }: Hero) {
-    this.heroService.remove(id).subscribe();
-  }
 }

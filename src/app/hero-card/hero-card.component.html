@@ -1,0 +1,19 @@
+<mat-card matRipple [routerLink]="['/heroes', hero.id]">
+  <mat-card-title>
+    <span class="name">{{hero.name}}</span>
+    <span class="id">{{hero.id}}</span>
+  </mat-card-title>
+  <mat-card-content [class.no-actions]="!showActions">
+
+  </mat-card-content>
+  <mat-card-actions *ngIf="showActions">
+    <button
+      mat-button
+      color="warn"
+      (click)="delete(); $event.stopPropagation()"
+      (mousedown)="$event.stopPropagation()"
+    >
+      DELETE
+    </button>
+  </mat-card-actions>
+</mat-card>

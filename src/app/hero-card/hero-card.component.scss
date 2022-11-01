@@ -1,0 +1,32 @@
+.mat-card {
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: -1px 3px 7px 0 rgba(0,0,0,.4);
+  }
+
+  .mat-card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .name {
+      font-size: 1rem;
+    }
+
+    .id {
+      font-size: .75rem;
+      color: #cccccc;
+      opacity: .68;
+    }
+  }
+
+  .mat-card-content.no-actions {
+    margin-bottom: 0;
+  }
+
+  .mat-card-actions {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
