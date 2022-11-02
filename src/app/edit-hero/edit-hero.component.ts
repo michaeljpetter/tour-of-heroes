@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
-import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-hero-detail',
-  templateUrl: './hero-detail.component.html',
-  styleUrls: ['./hero-detail.component.scss']
+  selector: 'app-edit-hero',
+  templateUrl: './edit-hero.component.html',
+  styleUrls: ['./edit-hero.component.scss']
 })
-export class HeroDetailComponent implements OnInit {
+export class EditHeroComponent implements OnInit {
   hero?: Observable<Hero | undefined>;
 
   constructor(
@@ -24,7 +24,8 @@ export class HeroDetailComponent implements OnInit {
     });
   }
 
-  deleted() {
-    this.router.navigateByUrl('/heroes');
+  submitted(hero: Hero) {
+    this.heroService.update(hero)
+      .subscribe(() => this.router.navigateByUrl('/heroes'));
   }
 }

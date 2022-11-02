@@ -1,4 +1,9 @@
-<mat-card matRipple [routerLink]="['/heroes', hero.id]">
+<mat-card
+  [class.clickable]="clickable"
+  matRipple
+  [matRippleDisabled]="!clickable"
+  [routerLink]="['/heroes', hero.id]"
+>
   <mat-card-title>
     <app-hero-title [hero]="hero"></app-hero-title>
   </mat-card-title>
@@ -7,12 +12,20 @@
   </mat-card-content>
   <mat-card-actions *ngIf="showActions">
     <button
-      mat-button
+      mat-icon-button
+      color="primary"
+      (click)="edit(); $event.stopPropagation()"
+      (mousedown)="$event.stopPropagation()"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button
+      mat-icon-button
       color="warn"
       (click)="delete(); $event.stopPropagation()"
       (mousedown)="$event.stopPropagation()"
     >
-      DELETE
+      <mat-icon>delete</mat-icon>
     </button>
   </mat-card-actions>
 </mat-card>

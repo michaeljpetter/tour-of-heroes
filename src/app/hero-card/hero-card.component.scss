@@ -1,8 +1,6 @@
 .mat-card {
-  cursor: pointer;
-
-  &:hover {
-    box-shadow: -1px 3px 7px 0 rgba(0,0,0,.4);
+  &.clickable {
+    cursor: pointer;
   }
 
   .mat-card-content.no-actions {
@@ -12,5 +10,7 @@
   .mat-card-actions {
     margin-bottom: 0;
     padding-bottom: 0;
+    display: flex;
+    justify-content: flex-end;
   }
 }

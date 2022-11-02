@@ -1,0 +1,8 @@
+<ng-container *ngIf="hero | async as hero">
+  <app-hero-editor
+    title="Edit {{hero.name}}"
+    [initialValues]="hero"
+    submitText="SAVE"
+    (submitted)="submitted($event)"
+  ></app-hero-editor>
+</ng-container>

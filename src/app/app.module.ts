@@ -17,6 +17,8 @@ import { MaterialModule } from './material.module';
 import { HeroCardComponent } from './hero-card/hero-card.component';
 import { HeroTitleComponent } from './hero-title/hero-title.component';
 import { NewHeroComponent } from './new-hero/new-hero.component';
+import { HeroEditorComponent } from './hero-editor/hero-editor.component';
+import { EditHeroComponent } from './edit-hero/edit-hero.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { NewHeroComponent } from './new-hero/new-hero.component';
     HeroSearchComponent,
     HeroCardComponent,
     HeroTitleComponent,
-    NewHeroComponent
+    NewHeroComponent,
+    HeroEditorComponent,
+    EditHeroComponent
   ],
   imports: [
     BrowserModule,

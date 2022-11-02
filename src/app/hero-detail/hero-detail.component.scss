@@ -1,0 +1,9 @@
+:host ::ng-deep {
+  .mat-card {
+    background-color: rgba(0,0,0,.04);
+  }
+
+  .mat-card-title .name {
+    font-size: unset;
+  }
+}
