@@ -19,14 +19,16 @@ export class HeroEditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      name: [this.initialValues?.name ?? '', [Validators.required, Validators.pattern(/\S+/)]]
+      name: [this.initialValues?.name, [Validators.required, Validators.pattern(/\S+/)]],
+      tagline: this.initialValues?.tagline
     });
   }
 
   submit() {
     const hero = {
       ...this.initialValues,
-      name: this.form.get('name')?.value.trim()
+      name: this.form.get('name')!.value.trim(),
+      tagline: this.form.get('tagline')!.value?.trim(),
     };
 
     this.submitted.emit(hero as Hero);

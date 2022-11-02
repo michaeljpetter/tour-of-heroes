@@ -3,6 +3,13 @@
     cursor: pointer;
   }
 
+  .mat-card-subtitle {
+    min-height: calc(1rem + 1px);
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
   .mat-card-content.no-actions {
     margin-bottom: 0;
   }

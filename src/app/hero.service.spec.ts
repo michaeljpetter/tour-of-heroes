@@ -26,7 +26,7 @@ describe('HeroService', () => {
     let heroes: Hero[];
 
     beforeEach(() => {
-      heroes = [{id: 1, name: 'Magnus'}, {id: 2, name: 'Shazam'}];
+      heroes = [{id: 1, name: 'Magnus', tagline: 'Beefy.'}, {id: 2, name: 'Shazam'}];
     })
 
     it('gets all heroes', () => {
@@ -45,7 +45,7 @@ describe('HeroService', () => {
     let heroes: Hero[];
 
     beforeEach(() => {
-      heroes = [{id: 3, name: 'Ragnar'}, {id: 4, name: 'Tiki'}];
+      heroes = [{id: 3, name: 'Ragnar', tagline: 'Not actually Swedish.'}, {id: 4, name: 'Tiki'}];
     })
 
     it('searches heroes', () => {
@@ -68,7 +68,7 @@ describe('HeroService', () => {
     let hero: Hero;
 
     beforeEach(() => {
-      hero = { id: 3, name: 'Halibut' };
+      hero = { id: 3, name: 'Halibut', tagline: '70% fish.' };
     });
 
     it('updates a hero', () => {

@@ -2,10 +2,14 @@
   <mat-card-title>{{title}}</mat-card-title>
   <mat-card-content>
     <form id="form" [formGroup]="form" (ngSubmit)="submit()">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" class="name">
         <mat-label>Name</mat-label>
-        <input matInput formControlName="name" />
+        <input matInput formControlName="name" maxlength="50" />
         <mat-error *ngIf="form.get('name')?.invalid">Name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="tagline">
+        <mat-label>Tagline</mat-label>
+        <input matInput formControlName="tagline" maxlength="100" />
       </mat-form-field>
     </form>
   </mat-card-content>

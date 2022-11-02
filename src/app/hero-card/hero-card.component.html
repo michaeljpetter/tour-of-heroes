@@ -7,6 +7,9 @@
   <mat-card-title>
     <app-hero-title [hero]="hero"></app-hero-title>
   </mat-card-title>
+  <mat-card-subtitle>
+    {{hero.tagline}}
+  </mat-card-subtitle>
   <mat-card-content [class.no-actions]="!showActions">
 
   </mat-card-content>

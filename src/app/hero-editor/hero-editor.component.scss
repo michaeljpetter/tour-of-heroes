@@ -7,6 +7,20 @@
 
   .mat-card-content {
     padding-top: 1rem;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+
+      .name {
+        max-width: calc(50ch + 1.5em);
+      }
+
+      .tagline {
+        max-width: calc(100ch + 1.5em);
+      }
+    }
   }
 
   .mat-card-actions {
