@@ -25,12 +25,10 @@ export class HeroEditorComponent implements OnInit {
   }
 
   submit() {
-    const hero = {
+    this.submitted.emit({
       ...this.initialValues,
       name: this.form.get('name')!.value.trim(),
       tagline: this.form.get('tagline')!.value?.trim(),
-    };
-
-    this.submitted.emit(hero as Hero);
+    } as Hero);
   }
 }

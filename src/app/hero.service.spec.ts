@@ -11,7 +11,7 @@ describe('HeroService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(HeroService);
     httpMock = TestBed.inject(HttpTestingController);

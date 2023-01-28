@@ -61,7 +61,7 @@ describe('cacheUntil', () => {
         }))(subject);
       });
 
-      it('refreshed and re-caches source values', done => {
+      it('refreshes and re-caches source values', done => {
         subject().subscribe((values: number[]) => {
           expect(values).toEqual([4, 5, 6, 4, 5, 6, 4, 5, 6]);
           expect(sourceObserver().next).toHaveBeenCalledTimes(6);
@@ -110,7 +110,7 @@ describe('cacheUntil', () => {
         }))(subject);
       });
 
-      it('refreshed and re-caches source values', done => {
+      it('refreshes and re-caches source values', done => {
         subject().subscribe((values: number[]) => {
           expect(values).toEqual([4, 4, 4, 5, 5, 5, 6, 6, 6]);
           expect(sourceObserver().next).toHaveBeenCalledTimes(6);
