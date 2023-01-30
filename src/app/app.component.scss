@@ -1,7 +1,14 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .header {
   display: grid;
   grid-template-columns: auto 1fr auto auto;
   gap: 1rem;
+  min-height: 4rem;
 
   .title {
     font-size: 1.5rem;
@@ -15,5 +22,12 @@ nav {
 }
 
 .content {
+  flex: 1;
   padding: 2rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  min-height: 4rem;
 }

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { PortalModule } from 'src/ext/angular/portal/portal.module';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
@@ -42,7 +43,8 @@ import { EditHeroComponent } from './edit-hero/edit-hero.component';
     AppRoutingModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    PortalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

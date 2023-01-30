@@ -13,15 +13,16 @@
       </mat-form-field>
     </form>
   </mat-card-content>
-  <mat-card-actions>
-    <button
-      type="submit"
-      form="form"
-      mat-flat-button
-      color="primary"
-      [disabled]="!form.valid"
-    >
-      {{submitText}}
-    </button>
-  </mat-card-actions>
 </mat-card>
+
+<ng-container *portal="'footer'">
+  <button
+    type="submit"
+    form="form"
+    mat-flat-button
+    color="primary"
+    [disabled]="!form.valid"
+  >
+    {{submitText}}
+  </button>
+</ng-container>
